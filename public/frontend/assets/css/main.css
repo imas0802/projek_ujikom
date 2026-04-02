@@ -3575,3 +3575,121 @@ section,
   color: color-mix(in srgb, var(--default-color), transparent 60%);
   font-size: 14px;
 }
+
+/* ===== Footer Styling ===== */
+.footer {
+  background-color: #f6f8fb;
+  border-top: 1px solid #e5e7eb;
+  margin-top: 80px;
+}
+
+.footer-top {
+  padding-top: 60px;
+}
+
+.footer .sitename {
+  color: #37517e;
+}
+.blog-details .article {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+/* ===== DETAIL RUANGAN ===== */
+.viewer-box {
+  height: 320px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #f8f9fa;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Biar panorama & denah proporsional */
+.viewer-box {
+  height: 360px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #f1f3f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Card utama */
+.blog-details .card {
+  border-radius: 16px;
+  border: none;
+}
+
+/* Judul section */
+.blog-details h5 {
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+/* Tabel detail */
+.blog-details table th {
+  color: #555;
+  font-weight: 600;
+}
+
+.blog-details table td {
+  color: #333;
+}
+
+/* ===== FOTO FASILITAS ===== */
+.img-fasilitas {
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.img-fasilitas:hover {
+  transform: scale(1.05);
+  filter: brightness(1.05);
+}
+/* ===== FOOTER ===== */
+.footer {
+  margin-top: 80px;
+  background: #1f2b48;
+  color: #ccc;
+}
+
+.footer a {
+  color: #ddd;
+}
+
+.footer a:hover {
+  color: #fff;
+}
+.fasilitas-gallery .image-wrapper {
+  transition: all 0.3s ease;
+}
+
+.fasilitas-gallery .image-wrapper:hover {
+  transform: scale(1.05);
+}
+
+.fasilitas-gallery .delete-form {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+}
+
+.fasilitas-gallery .image-wrapper:hover .delete-form {
+  opacity: 1;
+}
+
+/* Optional: biar tombol lebih bagus */
+.fasilitas-gallery .btn-danger.btn-sm.rounded-circle {
+  width: 28px;
+  height: 28px;
+  font-size: 14px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}

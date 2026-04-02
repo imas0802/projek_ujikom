@@ -35,4 +35,12 @@ Route::group(['prefix' => 'admin', 'as' => 'backend.', 'middleware' => ['auth', 
     Route::resource('/fasilitas', FasilitasController::class);
     Route::resource('/petugas', PetugasController::class);
 
+    Route::patch(
+    'ruangan/{id}/status',
+    [RuanganController::class, 'updateStatus']
+)->name('ruangan.updateStatus');
+
+Route::delete('/ruangan/image/{id}', [RuanganController::class, 'destroyImage'])
+    ->name('ruangan.image.destroy');
+
 });

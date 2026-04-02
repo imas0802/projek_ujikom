@@ -130,9 +130,12 @@ class FrontendController extends Controller
 
         return view('frontend.bk', compact('ruangan'));
     }
-    public function detail($slug){
-        $ruangan = Ruangan::where('slug', $slug)->firstOrFail();
+    public function detail($slug)
+{
+    $ruangan = Ruangan::with(['lantai', 'fasilitas', 'kategori', 'images'])
+        ->where('slug', $slug)
+        ->firstOrFail();
 
-        return view('frontend_component.detail', compact('ruangan'));
-    }
+    return view('layouts.frontend_component.detail', compact('ruangan'));
+}
 }

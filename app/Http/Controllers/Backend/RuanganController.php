@@ -6,7 +6,6 @@ use App\Models\Fasilitas;
 use App\Models\Kategori;
 use App\Models\Lantai;
 use App\Models\Ruangan;
-use App\Models\RuanganImage;
 use Illuminate\Http\Request;
 use Storage;
 use Illuminate\Support\Str;
@@ -46,7 +45,6 @@ class RuanganController extends Controller
                 'deskripsi' => 'nullable',
                 'gambar' => 'required|image',
                 'denah' => 'nullable|image',
-                'images.*' => 'image|mimes:jpg,jpeg,png|max:2048',
                 'fasilitas_id' => 'nullable',
                 'lantai_id' => 'required',
             ],
@@ -72,17 +70,6 @@ class RuanganController extends Controller
         }
 
         $ruangan = Ruangan::create($data);
-        //MULTI IMAGE FASILITAS RUANGAN
-        if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $img) {
-                $path = $img->store('ruangan_fasilitas', 'public');
-
-                RuanganImage::create([
-                    'ruangan_id' => $ruangan->id,
-                    'image' => $path,
-                ]);
-            }
-        }
 
         if ($request->has('fasilitas_id')) {
             $ruangan->fasilitas()->attach($request->fasilitas_id);
@@ -94,7 +81,7 @@ class RuanganController extends Controller
 
     public function show($id)
     {
-        $ruangan = Ruangan::with(['kategori', 'lantai.gedung', 'fasilitas', 'images'])->findOrFail($id);
+        $ruangan = Ruangan::with(['kategori', 'lantai.gedung', 'fasilitas'])->findOrFail($id);
         $kategori = Kategori::all();
         $lantai = Lantai::all();
         $fasilitas = Fasilitas::all();
@@ -184,19 +171,6 @@ class RuanganController extends Controller
         $ruangan->delete();
 
         toast('Ruangan berhasil dihapus', 'success')->position('bottom-end');
-        return back();
-    }
-    public function destroyImage($id)
-    {
-        $img = RuanganImage::findOrFail($id);
-
-        if (Storage::disk('public')->exists($img->image)) {
-            Storage::disk('public')->delete($img->image);
-        }
-
-        $img->delete();
-
-        toast('Foto fasilitas berhasil dihapus', 'success')->position('bottom-end');
         return back();
     }
     

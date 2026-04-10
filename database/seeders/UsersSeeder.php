@@ -19,12 +19,13 @@ class UsersSeeder extends Seeder
         );
 
         User::updateOrCreate(
-            ['email' => 'imas@gmail.com'],
-            [
-                'name'     => 'User',
-                'password' => Hash::make('rahasia1'),
-                'role'     => 0,
-            ]
-        );
+    ['email' => 'siswasmk@gmail.com'],
+    [
+        'name'     => 'Siswa SMK',
+        'password' => Hash::make('rahasia1'),
+        'role'     => 0,
+    ]
+);
+
     }
 }

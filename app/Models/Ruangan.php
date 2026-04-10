@@ -33,8 +33,4 @@ class Ruangan extends Model
     {
         return $this->belongsToMany(Fasilitas::class, 'fasilitas_ruangans', 'ruangan_id', 'fasilitas_id');
     }
-    public function images()
-    {
-    return $this->hasMany(RuanganImage::class);
-    }
 }

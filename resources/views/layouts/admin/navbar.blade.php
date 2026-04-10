@@ -34,9 +34,6 @@
 
                     <div class="dropdown-menu dropdown-profile animated fadeIn">
                         <ul class="dropdown-content-body">
-                            <li>
-                                <a href="#"><i class="icon-user"></i> Profile</a>
-                            </li>
                             <hr>
                             <li>
                                 <a href="#"

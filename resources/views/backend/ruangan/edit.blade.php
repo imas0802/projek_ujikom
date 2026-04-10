@@ -133,13 +133,6 @@
                                         class="mt-2">
                                 @endif
                             </div>
-                            <div class="mb-3">
-                                <label class="form-label">
-                                    Foto Fasilitas Ruangan
-                                    <small class="text-muted">(bisa lebih dari satu)</small>
-                                </label>
-                                <input type="file" name="images[]" class="form-control" multiple>
-                            </div>
                             <div class="mb-2">
                                 <button type="submit" class="btn btn-sm btn-outline-primary">Simpan</button>
                                 <button type="reset" class="btn btn-sm btn-outline-warning">Reset</button>

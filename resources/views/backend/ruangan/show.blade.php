@@ -58,22 +58,6 @@
                             @endif
                         </td>
                     </tr>
-                    <tr>
-                        <th>Foto Fasilitas</th>
-                        <td>
-                            @if ($ruangan->images && $ruangan->images->count())
-                                <div class="d-flex flex-wrap gap-2">
-                                    @foreach ($ruangan->images as $img)
-                                        <img src="{{ asset('storage/' . $img->image) }}" alt="Foto Fasilitas" width="120"
-                                            class="rounded border">
-                                    @endforeach
-                                </div>
-                            @else
-                                <span class="text-muted">Tidak ada foto fasilitas</span>
-                            @endif
-                        </td>
-                    </tr>
-
                 </table>
 
                 <a href="{{ route('backend.ruangan.index') }}" class="btn btn-secondary mt-3">Kembali</a>

@@ -14,8 +14,19 @@
       </ul>
       <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
     </nav>
-    <a class="btn-getstarted" href="{{ route('login') }}">
-      Login
-    </a>
+    @guest
+  <a class="btn-getstarted" href="{{ route('login') }}">
+    Login
+  </a>
+@endguest
+
+@auth
+  <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+    @csrf
+    <button type="submit" class="btn-getstarted" style="border:none;">
+      Logout
+    </button>
+  </form>
+@endauth
   </div>
 </header>

@@ -156,36 +156,6 @@
                                 </div>
                             @endif
                         </div>
-                        @if ($ruangan->images && $ruangan->images->count())
-                            <h5 class="mb-3 text-center">Foto Fasilitas</h5>
-                            <div class="row g-2 fasilitas-gallery">
-                                @foreach ($ruangan->images as $img)
-                                    <div class="col-4 position-relative"> 
-                                        <div class="image-wrapper position-relative overflow-hidden rounded shadow-sm">
-                                            <a href="{{ asset('storage/' . $img->image) }}" class="glightbox d-block"
-                                                data-gallery="fasilitas">
-                                                <img src="{{ asset('storage/' . $img->image) }}"
-                                                    class="img-fluid w-100" alt="Foto Fasilitas"
-                                                    style="height: 100px; object-fit: cover;">
-                                            </a>
-
-                                            <!-- Tombol hapus fotonya -->
-                                            <form method="POST"
-                                                action="{{ route('backend.ruangan.image.destroy', $img->id) }}"
-                                                class="delete-form position-absolute top-0 end-0 m-1"
-                                                onsubmit="return confirm('Yakin hapus foto ini?');">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit"
-                                                    class="btn btn-danger btn-sm rounded-circle p-1 shadow">
-                                                    🗑
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                        @endif
                     </div>
                 </div>
             </div>

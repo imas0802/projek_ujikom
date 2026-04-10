@@ -77,14 +77,6 @@
                                 <label class="form-label">Denah</label>
                                 <input type="file" name="denah" class="form-control">
                             </div>
-
-                            <div class="mb-3">
-                                <label class="form-label">
-                                    Foto Fasilitas Ruangan
-                                    <small class="text-muted">(bisa lebih dari satu)</small>
-                                </label>
-                                <input type="file" name="images[]" class="form-control" multiple>
-                            </div>
                         </div>
 
                         {{-- Button --}}

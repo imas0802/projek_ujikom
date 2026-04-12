@@ -17,13 +17,63 @@
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="{{ asset('admin/assets/css/style.css') }}">
+    <style>
+    /* ===== GLOBAL BACKGROUND ===== */
+    body {
+        background: linear-gradient(135deg, #eef2ff, #dbeafe);
+        min-height: 100vh;
+    }
+
+    /* ===== CARD ===== */
+    .card-clean {
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        border: none;
+    }
+
+    .card-header-clean {
+        background: transparent;
+        border-bottom: 1px solid #eee;
+        font-weight: 600;
+    }
+
+    /* ===== BUTTON ===== */
+    .btn-main {
+        background: #4D96FF;
+        color: white;
+        border-radius: 10px;
+        border: none;
+        padding: 6px 14px;
+    }
+
+    .btn-main:hover {
+        background: #3a7be0;
+    }
+
+    /* ===== TABLE ===== */
+    .table-clean thead {
+        background: #f8f9ff;
+        color: #666;
+    }
+
+    .table-clean tbody tr:hover {
+        background: #f5f8ff;
+    }
+
+    /* ===== ACTION BUTTON ===== */
+    .btn-sm {
+        border-radius: 8px;
+        font-size: 12px;
+    }
+</style>
 </head>
 
 <body>
 
 <!-- Preloader -->
 <div id="preloader">
-    <div class="loader">
+     <div class="loader">
         <svg class="circular" viewBox="25 25 50 50">
             <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3"/>
         </svg>

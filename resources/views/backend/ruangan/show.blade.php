@@ -1,67 +1,94 @@
 @extends('layouts.backend')
 
 @section('content')
-    <div class="container">
-        <div class="card mt-4">
-            <div class="card-header bg-secondary text-white">
-                Detail Ruangan
-            </div>
-            <div class="card-body pt-3">
-                <table class="table table-bordered mt-2">
-                    <tr>
-                        <th>Nama Ruangan</th>
-                        <td>{{ $ruangan->nama_ruangan }}</td>
-                    </tr>
-                    <tr>
-                        <th>Kategori</th>
-                        <td>{{ $ruangan->kategori->nama ?? '-' }}</td>
-                    </tr>
-                    <tr>
-                        <th>Deskripsi</th>
-                        <td>{{ $ruangan->deskripsi }}</td>
-                    </tr>
-                    <tr>
-                        <th>Lantai</th>
-                        <td>{{ $ruangan->lantai->nama_lantai ?? '-' }}</td>
-                    </tr>
-                    <tr>
-                        <th>Fasilitas</th>
-                        <td>
-                            @if ($ruangan->fasilitas && $ruangan->fasilitas->count())
-                                <ul>
-                                    @foreach ($ruangan->fasilitas as $fas)
-                                        <li>{{ $fas->nama_fasilitas }}</li>
-                                    @endforeach
-                                </ul>
-                            @else
-                                <span class="text-muted">Tidak ada fasilitas</span>
-                            @endif
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Gambar</th>
-                        <td>
-                            @if ($ruangan->gambar)
-                                <img src="{{ asset('storage/' . $ruangan->gambar) }}" alt="Gambar Ruangan" width="150">
-                            @else
-                                <span class="text-muted">Tidak ada gambar</span>
-                            @endif
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Denah</th>
-                        <td>
-                            @if ($ruangan->denah)
-                                <img src="{{ asset('storage/' . $ruangan->denah) }}" alt="Denah Ruangan" width="150">
-                            @else
-                                <span class="text-muted">Tidak ada denah</span>
-                            @endif
-                        </td>
-                    </tr>
-                </table>
 
-                <a href="{{ route('backend.ruangan.index') }}" class="btn btn-secondary mt-3">Kembali</a>
+
+<div class="container">
+
+    <div class="card card-detail mt-4 p-4">
+
+        <h4 class="mb-4 fw-bold">📋 Detail Ruangan</h4>
+
+        <div class="row">
+
+            <!-- LEFT SIDE -->
+            <div class="col-md-6">
+
+                <div class="detail-item">
+                    <div class="detail-label">Nama Ruangan</div>
+                    <div class="detail-value">{{ $ruangan->nama_ruangan }}</div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-label">Kategori</div>
+                    <div class="detail-value">{{ $ruangan->kategori->nama ?? '-' }}</div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-label">Lantai</div>
+                    <div class="detail-value">{{ $ruangan->lantai->nama_lantai ?? '-' }}</div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-label">Deskripsi</div>
+                    <div class="detail-value">{{ $ruangan->deskripsi }}</div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-label">Fasilitas</div>
+
+                    @if ($ruangan->fasilitas && $ruangan->fasilitas->count())
+                        @foreach ($ruangan->fasilitas as $fas)
+                            <span class="badge-fasilitas">
+                                {{ $fas->nama_fasilitas }}
+                            </span>
+                        @endforeach
+                    @else
+                        <div class="text-muted">Tidak ada fasilitas</div>
+                    @endif
+                </div>
+
             </div>
+
+            <!-- RIGHT SIDE -->
+            <div class="col-md-6 text-center">
+
+                <div class="mb-4">
+                    <div class="detail-label mb-2">Gambar</div>
+
+                    @if ($ruangan->gambar)
+                        <img src="{{ asset('storage/' . $ruangan->gambar) }}"
+                            class="img-preview"
+                            style="width:100%; max-height:220px;">
+                    @else
+                        <div class="text-muted">Tidak ada gambar</div>
+                    @endif
+                </div>
+
+                <div>
+                    <div class="detail-label mb-2">Denah</div>
+
+                    @if ($ruangan->denah)
+                        <img src="{{ asset('storage/' . $ruangan->denah) }}"
+                            class="img-preview"
+                            style="width:100%; max-height:220px; object-fit:contain;">
+                    @else
+                        <div class="text-muted">Tidak ada denah</div>
+                    @endif
+                </div>
+
+            </div>
+
         </div>
+
+        <div class="mt-4">
+            <a href="{{ route('backend.ruangan.index') }}" class="btn btn-secondary">
+                ← Kembali
+            </a>
+        </div>
+
     </div>
+
+</div>
+
 @endsection

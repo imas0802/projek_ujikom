@@ -5,7 +5,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    Edit Lantai
+                   ✏️ Edit Lantai
                 </div>
                 <div class="card-body">
                     <form action="{{ route('backend.lantai.update',$lantai->id) }}" method="post">

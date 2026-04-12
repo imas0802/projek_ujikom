@@ -5,7 +5,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    Edit Gedung
+                   ✏️ Edit Gedung
                 </div>
                 <div class="card-body">
                     <form action="{{ route('backend.gedung.update',$gedung->id) }}" method="post">

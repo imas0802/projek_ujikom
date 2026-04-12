@@ -5,7 +5,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    Edit Fasilitas Ruangan
+                  ✏️  Edit Fasilitas Ruangan
                 </div>
                 <div class="card-body">
                     <form action="{{ route('backend.fasilitas-ruangan.update',$data->id) }}" method="post">

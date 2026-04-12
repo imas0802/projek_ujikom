@@ -5,9 +5,9 @@
 
     <div class="card card-clean">
         <div class="card-header card-header-clean d-flex justify-content-between align-items-center">
-            <span>Data Lantai</span>
+            <span>📊 Data Lantai</span>
 
-            <a href="{{route('backend.lantai.create')}}" class="btn btn-main btn-sm">
+            <a href="{{route('backend.lantai.create')}}" class="btn btn-primary-soft">
                 + Tambah
             </a>
         </div>

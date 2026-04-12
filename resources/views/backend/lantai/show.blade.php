@@ -9,7 +9,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-header bg-secondary">
-                    Detail Lantai
+                  📋 Detail Lantai
                 </div>
                 <div class="card-body">
                     <div class="table table-responsive">

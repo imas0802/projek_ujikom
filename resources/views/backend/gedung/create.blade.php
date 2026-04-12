@@ -1,35 +1,38 @@
 @extends('layouts.backend')
-@section('content')
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col">
-                <div class="card">
-                    <div class="card-header">
-                        Tambah Gedung
-                    </div>
-                    <div class="card-body">
-                        <form action="{{ route('backend.gedung.store') }}" method="post">
-                            @csrf
-                            <div class="mb-2">
-                                <label for="">Nama Gedung</label>
-                                <input type="text" name="nama_gedung"
-                                    class="form-control
-                            @error('nama_gedung') is-invalid @enderror">
-                                @error('nama_gedung')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
 
-                            <div class="mb-2">
-                                <button type="submit" class="btn btn-sm btn-outline-primary">Simpan</button>
-                                <button type="reset" class="btn btn-sm btn-outline-warning">Reset</button>
-                            </div>
-                        </form>
+@section('content')
+
+<div class="container-fluid">
+
+    <div class="card card-form p-4">
+
+        <h4 class="mb-4 fw-bold">🏢 Tambah Gedung</h4>
+
+        <form action="{{ route('backend.gedung.store') }}" method="POST">
+            @csrf
+
+            <div class="mb-3">
+                <label class="form-label">Nama Gedung</label>
+                <input type="text" name="nama_gedung"
+                    class="form-control @error('nama_gedung') is-invalid @enderror"
+                    placeholder="Masukkan nama gedung">
+
+                @error('nama_gedung')
+                    <div class="invalid-feedback">
+                        {{ $message }}
                     </div>
-                </div>
+                @enderror
             </div>
-        </div>
+
+            <div class="text-end">
+                <button type="submit" class="btn btn-main">💾 Simpan</button>
+                <button type="reset" class="btn btn-outline-secondary btn-reset">Reset</button>
+            </div>
+
+        </form>
+
     </div>
+
+</div>
+
 @endsection

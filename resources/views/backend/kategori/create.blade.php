@@ -1,35 +1,38 @@
 @extends('layouts.backend')
-@section('content')
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col">
-                <div class="card">
-                    <div class="card-header">
-                        Tambah Kategori
-                    </div>
-                    <div class="card-body">
-                        <form action="{{ route('backend.kategori.store') }}" method="post">
-                            @csrf
-                            <div class="mb-2">
-                                <label for="">Nama Kategori</label>
-                                <input type="text" name="kategori"
-                                    class="form-control
-                            @error('kategori') is-invalid @enderror">
-                                @error('kategori')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
 
-                            <div class="mb-2">
-                                <button type="submit" class="btn btn-sm btn-outline-primary">Simpan</button>
-                                <button type="reset" class="btn btn-sm btn-outline-warning">Reset</button>
-                            </div>
-                        </form>
+@section('content')
+
+<div class="container-fluid">
+
+    <div class="card card-form p-4">
+
+        <h4 class="mb-4 fw-bold">📂 Tambah Kategori</h4>
+
+        <form action="{{ route('backend.kategori.store') }}" method="POST">
+            @csrf
+
+            <div class="mb-3">
+                <label class="form-label">Nama Kategori</label>
+                <input type="text" name="kategori"
+                    class="form-control @error('kategori') is-invalid @enderror"
+                    placeholder="Masukkan nama kategori">
+
+                @error('kategori')
+                    <div class="invalid-feedback">
+                        {{ $message }}
                     </div>
-                </div>
+                @enderror
             </div>
-        </div>
+
+            <div class="text-end">
+                <button type="submit" class="btn btn-main">💾 Simpan</button>
+                <button type="reset" class="btn btn-outline-secondary btn-reset">Reset</button>
+            </div>
+
+        </form>
+
     </div>
+
+</div>
+
 @endsection

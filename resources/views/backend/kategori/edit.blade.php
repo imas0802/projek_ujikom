@@ -5,7 +5,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    Edit Kategori
+                   ✏️ Edit Kategori
                 </div>
                 <div class="card-body">
                     <form action="{{ route('backend.kategori.update',$kategori->id) }}" method="post">

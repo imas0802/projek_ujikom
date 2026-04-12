@@ -9,9 +9,9 @@
         <div class="col">
             <div class="card">
                 <div class="card-header bg-secondary">
-                    Data Gedung
-                    <a href="{{route('backend.gedung.create')}}" class="btn btn-info btn-sm" style="color:white; float: right;">
-                        Tambah
+                    📊 Data Gedung
+                    <a href="{{route('backend.gedung.create')}}" class="btn btn-primary-soft">
+                       + Tambah
                     </a>
                 </div>
                 <div class="card-body">

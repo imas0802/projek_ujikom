@@ -132,7 +132,7 @@ class FrontendController extends Controller
     }
     public function detail($slug)
 {
-    $ruangan = Ruangan::with(['lantai', 'fasilitas', 'kategori', 'images'])
+    $ruangan = Ruangan::with(['lantai', 'fasilitas', 'kategori'])
         ->where('slug', $slug)
         ->firstOrFail();
 

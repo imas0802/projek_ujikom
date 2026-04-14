@@ -1,20 +1,15 @@
 <!DOCTYPE html>
-<html class="h-100" lang="en">
-
+<html class="h-100" lang="id">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
+    <title>Rosella - Login</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('admin/assets/images/favicon.png') }}">
-    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> -->
     <link href="{{ asset('admin/assets/css/style.css') }}" rel="stylesheet">
-
 </head>
-
 <body class="h-100">
-
     <!--*******************
         Preloader start
     ********************-->
@@ -29,10 +24,6 @@
     <!--*******************
         Preloader end
     ********************-->
-
-
-
-
 
     <div class="login-form-bg h-100">
         <div class="container h-100">
@@ -82,13 +73,21 @@
                                         </div>
                                     </div>
 
-
-                                    <button class="btn btn-primary btn-lg w-100 fw-semibold">
+                                    <button type="submit" class="btn btn-primary btn-lg w-100 fw-semibold">
                                         {{ __('Login') }}
                                     </button>
                                 </form>
-                                <p class="mt-5 login-form__footer">Dont have account? <a href="page-register.html"
-                                        class="text-primary">Sign Up</a> now</p>
+
+                                <!-- Bagian Register yang sudah diperbaiki -->
+                                <div class="text-center mt-4">
+                                    <p class="login-form__footer mb-0">
+                                        Belum punya akun? 
+                                        <a href="{{ route('register') }}" class="text-primary fw-semibold">
+                                            Register di sini
+                                        </a>
+                                    </p>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -96,9 +95,6 @@
             </div>
         </div>
     </div>
-
-
-
 
     <!--**********************************
         Scripts
@@ -109,5 +105,4 @@
     <script src="{{ asset('admin/assets/js/gleek.js') }}"></script>
     <script src="{{ asset('admin/assets/js/styleSwitcher.js') }}"></script>
 </body>
-
 </html>

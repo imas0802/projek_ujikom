@@ -5,137 +5,99 @@ use App\Models\Ruangan;
 
 class FrontendController extends Controller
 {
+    private function getByKategori($nama)
+    {
+        return Ruangan::with(['lantai', 'fasilitas', 'kategori'])
+            ->whereHas('kategori', function ($q) use ($nama) {
+                $q->where('nama', $nama);
+            })
+            ->get();
+    }
+
     public function index()
     {
         $ruangan = Ruangan::all();
         return view('index', compact('ruangan'));
     }
+
     public function labkom()
     {
-        $ruangan = Ruangan::with(['lantai', 'fasilitas', 'kategori'])
-            ->whereHas('kategori', function ($query) {
-                $query->where('nama', 'Labkom');
-            })
-            ->get();
-
+        $ruangan = $this->getByKategori('Labkom');
         return view('frontend.labkom', compact('ruangan'));
     }
+
     public function bengkelMotor()
     {
-        $ruangan = Ruangan::with(['lantai', 'fasilitas', 'kategori'])
-            ->whereHas('kategori', function ($query) {
-                $query->where('nama', 'Bengkel Motor');
-            })
-            ->get();
-
+        $ruangan = $this->getByKategori('Bengkel Motor');
         return view('frontend.bengkel_motor', compact('ruangan'));
     }
+
     public function bengkelMobil()
     {
-        $ruangan = Ruangan::with(['lantai', 'fasilitas', 'kategori'])
-            ->whereHas('kategori', function ($query) {
-                $query->where('nama', 'Bengkel Mobil');
-            })
-            ->get();
-
+        $ruangan = $this->getByKategori('Bengkel Mobil');
         return view('frontend.bengkel_mobil', compact('ruangan'));
     }
+
     public function tu()
     {
-        $ruangan = Ruangan::with(['lantai', 'fasilitas', 'kategori'])
-            ->whereHas('kategori', function ($query) {
-                $query->where('nama', 'Administrasi');
-            })
-            ->get();
-
+        $ruangan = $this->getByKategori('Administrasi');
         return view('frontend.tu', compact('ruangan'));
     }
+
     public function ru()
     {
-        $ruangan = Ruangan::with(['lantai', 'fasilitas', 'kategori'])
-            ->whereHas('kategori', function ($query) {
-                $query->where('nama', 'Ruang Guru');
-            })
-            ->get();
-
+        $ruangan = $this->getByKategori('Ruang Guru');
         return view('frontend.guru', compact('ruangan'));
     }
+
     public function studio()
     {
-        $ruangan = Ruangan::with(['lantai', 'fasilitas', 'kategori'])
-            ->whereHas('kategori', function ($query) {
-                $query->where('nama', 'Ruang Kesenian');
-            })
-            ->get();
-
+        $ruangan = $this->getByKategori('Ruang Kesenian');
         return view('frontend.studio', compact('ruangan'));
     }
+
     public function perpus()
     {
-        $ruangan = Ruangan::with(['lantai', 'fasilitas', 'kategori'])
-            ->whereHas('kategori', function ($query) {
-                $query->where('nama', 'Ruang Baca');
-            })
-            ->get();
-
+        $ruangan = $this->getByKategori('Ruang Baca');
         return view('frontend.perpus', compact('ruangan'));
     }
+
     public function uks()
     {
-        $ruangan = Ruangan::with(['lantai', 'fasilitas', 'kategori'])
-            ->whereHas('kategori', function ($query) {
-                $query->where('nama', 'Unit Kesehatan');
-            })
-            ->get();
-
+        $ruangan = $this->getByKategori('Unit Kesehatan');
         return view('frontend.uks', compact('ruangan'));
     }
+
     public function blk()
     {
-        $ruangan = Ruangan::with(['lantai', 'fasilitas', 'kategori'])
-            ->whereHas('kategori', function ($query) {
-                $query->where('nama', 'Balai Latihan');
-            })
-            ->get();
-
+        $ruangan = $this->getByKategori('Balai Latihan');
         return view('frontend.blk', compact('ruangan'));
     }
+
     public function osis()
     {
-        $ruangan = Ruangan::with(['lantai', 'fasilitas', 'kategori'])
-            ->whereHas('kategori', function ($query) {
-                $query->where('nama', 'Organisasi');
-            })
-            ->get();
-
+        $ruangan = $this->getByKategori('Organisasi');
         return view('frontend.osis', compact('ruangan'));
     }
+
     public function wakasek()
     {
-        $ruangan = Ruangan::with(['lantai', 'fasilitas', 'kategori'])
-            ->whereHas('kategori', function ($query) {
-                $query->where('nama', 'Wakasek');
-            })
-            ->get();
-
+        $ruangan = $this->getByKategori('Wakasek');
         return view('frontend.wakasek', compact('ruangan'));
     }
+
     public function bk()
     {
-        $ruangan = Ruangan::with(['lantai', 'fasilitas', 'kategori'])
-            ->whereHas('kategori', function ($query) {
-                $query->where('nama', 'Bimbingan Konseling');
-            })
-            ->get();
-
+        $ruangan = $this->getByKategori('Bimbingan Konseling');
         return view('frontend.bk', compact('ruangan'));
     }
-    public function detail($slug)
-{
-    $ruangan = Ruangan::with(['lantai', 'fasilitas', 'kategori'])
-        ->where('slug', $slug)
-        ->firstOrFail();
 
-    return view('layouts.frontend_component.detail', compact('ruangan'));
-}
+    public function detail($slug)
+    {
+        $ruangan = Ruangan::with(['lantai', 'fasilitas', 'kategori'])
+            ->where('slug', $slug)
+            ->firstOrFail();
+
+        return view('layouts.frontend_component.detail', compact('ruangan'));
+    }
 }

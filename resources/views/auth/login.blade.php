@@ -1,73 +1,140 @@
-@extends('layouts.app')
-@section('content')
-        <div class="login-form-bg h-100">
-        <div class="container h-100">
-            <div class="row justify-content-center h-100">
-                <div class="col-xl-6">
-                    <div class="form-input-content">
-                        <div class="card shadow-lg border-0 rounded-4 mb-0">
-                            <div class="card-body p-5">
-                                <div class="text-center mb-4">
-                                    <h2 class="fw-bold">Rosella</h2>
-                                    <p class="text-muted mb-0">Silakan login untuk melanjutkan</p>
-                                </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SIG Sekolah</title>
 
-                                <form class="mt-5 mb-5 login-input" method="POST" action="{{ route('login') }}">
-                                    @csrf
-                                    <div class="form-group mb-3">
-                                        <input id="email" type="email"
-                                            class="form-control form-control-lg @error('email') is-invalid @enderror"
-                                            name="email" value="{{ old('email') }}" required autocomplete="email"
-                                            autofocus placeholder="Masukkan email">
-                                        @error('email')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-                                    <div class="form-group mb-4">
-                                        <input id="password" type="password"
-                                            class="form-control form-control-lg @error('password') is-invalid @enderror"
-                                            name="password" required autocomplete="current-password"
-                                            placeholder="Masukkan password">
-                                        @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
+        body {
+            height: 100vh;
+            background: linear-gradient(135deg, #5a8dee, #3a6fd8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-                                    <div class="d-flex justify-content-between align-items-center mb-4">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="remember"
-                                                id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                            <label class="form-check-label" for="remember">
-                                                Remember Me
-                                            </label>
-                                        </div>
-                                    </div>
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 30px;
+        }
 
-                                    <button type="submit" class="btn btn-primary btn-lg w-100 fw-semibold">
-                                        {{ __('Login') }}
-                                    </button>
-                                </form>
+        .login-box {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        }
 
-                                <!-- Bagian Register yang sudah diperbaiki -->
-                                <div class="text-center mt-4">
-                                    <p class="login-form__footer mb-0">
-                                        Belum punya akun? 
-                                        <a href="{{ route('register') }}" class="text-primary fw-semibold">
-                                            Register di sini
-                                        </a>
-                                    </p>
-                                </div>
+        .login-box h1 {
+            margin-bottom: 10px;
+        }
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        .login-box p {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 25px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 12px;
+            border: none;
+            outline: none;
+            background: rgba(255,255,255,0.15);
+            color: white;
+        }
+
+        .input-group input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .remember {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            margin: 10px 0 20px;
+        }
+
+        .remember input {
+            accent-color: white;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            border: none;
+            background: white;
+            color: #3a6fd8;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-login:hover {
+            background: #eaeaea;
+        }
+
+        .error {
+            color: #ffb3b3;
+            font-size: 13px;
+            margin-top: 5px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <div class="login-box">
+        <h1>SIG Sekolah</h1>
+        <p>Silakan login untuk melanjutkan</p>
+
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
+
+            <div class="input-group">
+                <input type="email" name="email" placeholder="Masukkan email"
+                    value="{{ old('email') }}" required>
+                @error('email')
+                    <div class="error">{{ $message }}</div>
+                @enderror
             </div>
-        </div>
+
+            <div class="input-group">
+                <input type="password" name="password" placeholder="Masukkan password" required>
+                @error('password')
+                    <div class="error">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="remember">
+                <input type="checkbox" name="remember" id="remember">
+                <label for="remember">Remember me</label>
+            </div>
+
+            <button type="submit" class="btn-login">Login</button>
+        </form>
     </div>
-    @endsection
+</div>
+
+</body>
+</html>

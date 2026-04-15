@@ -14,4 +14,3 @@ Route::apiResource('ruangan', RuanganController::class);
 Route::delete('/ruangan/{id}', [RuanganController::class, 'destroy']);
 Route::post('login', [AuthController::class, 'login']);
 Route::get('kategori', [KategoriController::class, 'index']);
-

@@ -83,7 +83,29 @@
 
 </div>
 
+<!-- STYLE -->
+<style>
+.fasilitas-tag {
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+
+.fasilitas-tag:hover {
+    background-color: #e3f2fd;
+}
+
+.fasilitas-tag.active {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    color: white;
+    transform: scale(1.05);
+}
+</style>
+
+<!-- SCRIPT -->
 <script>
+document.addEventListener('DOMContentLoaded', function () {
+
     const tags = document.querySelectorAll('.fasilitas-tag');
     const wrapper = document.getElementById('fasilitas-input-wrapper');
 
@@ -101,7 +123,10 @@
                 this.classList.add('active');
             }
 
+            // reset input hidden
             wrapper.innerHTML = '';
+
+            // buat input hidden
             selected.forEach(val => {
                 const input = document.createElement('input');
                 input.type = 'hidden';
@@ -111,6 +136,8 @@
             });
         });
     });
+
+});
 </script>
 
 @endsection

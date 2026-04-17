@@ -33,17 +33,17 @@
                 </a>
             </li>
 
-            <li>
-                <a href="{{ route('backend.ruangan.index') }}">
-                    <i class="icon-grid menu-icon"></i>
-                    <span class="nav-text">Ruangan</span>
+             <li>
+                <a href="{{ route('backend.fasilitas.index') }}">
+                    <i class="icon-wrench menu-icon"></i>
+                    <span class="nav-text">Fasilitas</span>
                 </a>
             </li>
 
             <li>
-                <a href="{{ route('backend.fasilitas.index') }}">
-                    <i class="icon-wrench menu-icon"></i>
-                    <span class="nav-text">Fasilitas</span>
+                <a href="{{ route('backend.ruangan.index') }}">
+                    <i class="icon-grid menu-icon"></i>
+                    <span class="nav-text">Ruangan</span>
                 </a>
             </li>
         </ul>

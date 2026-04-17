@@ -1,96 +1,154 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - SIG Sekolah</title>
 
-@section('content')
-<div class="container h-100">
-    <div class="row justify-content-center align-items-center min-vh-100">
-        <div class="col-xl-6 col-lg-7 col-md-8">
-            <div class="card shadow-lg border-0 rounded-4">
-                <div class="card-body p-5">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-                    <!-- Header -->
-                    <div class="text-center mb-5">
-                        <h2 class="fw-bold text-primary">Rosella</h2>
-                        <p class="text-muted mb-0">Buat akun baru untuk melanjutkan</p>
-                    </div>
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #5a8dee, #3a6fd8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+        .container {
+            width: 100%;
+            max-width: 420px;
+            padding: 30px;
+        }
 
-                        <!-- Nama -->
-                        <div class="mb-4">
-                            <label for="name" class="form-label fw-semibold">Nama Lengkap</label>
-                            <input id="name" type="text" 
-                                   class="form-control form-control-lg @error('name') is-invalid @enderror" 
-                                   name="name" value="{{ old('name') }}" required autocomplete="name" autofocus
-                                   placeholder="Masukkan nama lengkap">
+        .box {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 40px 30px;
+            color: white;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        }
 
-                            @error('name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
+        .box h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
 
-                        <!-- Email -->
-                        <div class="mb-4">
-                            <label for="email" class="form-label fw-semibold">Alamat Email</label>
-                            <input id="email" type="email" 
-                                   class="form-control form-control-lg @error('email') is-invalid @enderror" 
-                                   name="email" value="{{ old('email') }}" required autocomplete="email"
-                                   placeholder="Masukkan email">
+        .box p {
+            text-align: center;
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 25px;
+        }
 
-                            @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
+        .input-group {
+            margin-bottom: 15px;
+        }
 
-                        <!-- Password -->
-                        <div class="mb-4">
-                            <label for="password" class="form-label fw-semibold">Password</label>
-                            <input id="password" type="password" 
-                                   class="form-control form-control-lg @error('password') is-invalid @enderror" 
-                                   name="password" required autocomplete="new-password"
-                                   placeholder="Buat password">
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 12px;
+            border: none;
+            outline: none;
+            background: rgba(255,255,255,0.15);
+            color: white;
+        }
 
-                            @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
+        .input-group input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
 
-                        <!-- Konfirmasi Password -->
-                        <div class="mb-4">
-                            <label for="password-confirm" class="form-label fw-semibold">Konfirmasi Password</label>
-                            <input id="password-confirm" type="password" 
-                                   class="form-control form-control-lg" 
-                                   name="password_confirmation" required autocomplete="new-password"
-                                   placeholder="Ulangi password">
-                        </div>
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            border: none;
+            background: white;
+            color: #3a6fd8;
+            font-weight: bold;
+            cursor: pointer;
+        }
 
-                        <!-- Tombol Register -->
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-primary btn-lg fw-semibold py-3">
-                                Daftar Sekarang
-                            </button>
-                        </div>
-                    </form>
+        .btn:hover {
+            background: #eaeaea;
+        }
 
-                    <!-- Link ke Login -->
-                    <div class="text-center mt-4">
-                        <p class="mb-0">
-                            Sudah punya akun? 
-                            <a href="{{ route('login') }}" class="text-primary fw-semibold">
-                                Login di sini
-                            </a>
-                        </p>
-                    </div>
+        .error {
+            font-size: 13px;
+            color: #ffb3b3;
+            margin-top: 5px;
+        }
 
-                </div>
+        .login-link {
+            text-align: center;
+            margin-top: 18px;
+            font-size: 13px;
+            opacity: 0.85;
+        }
+
+        .login-link a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="box">
+        <h1>SIG Sekolah</h1>
+        <p>Buat akun baru untuk melanjutkan</p>
+
+        <form method="POST" action="{{ route('register') }}">
+            @csrf
+
+            <div class="input-group">
+                <input type="text" name="name" placeholder="Nama lengkap" value="{{ old('name') }}" required>
+                @error('name')
+                    <div class="error">{{ $message }}</div>
+                @enderror
             </div>
+
+            <div class="input-group">
+                <input type="email" name="email" placeholder="Email" value="{{ old('email') }}" required>
+                @error('email')
+                    <div class="error">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="input-group">
+                <input type="password" name="password" placeholder="Password" required>
+                @error('password')
+                    <div class="error">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="input-group">
+                <input type="password" name="password_confirmation" placeholder="Konfirmasi password" required>
+            </div>
+
+            <button type="submit" class="btn">Register</button>
+        </form>
+
+        <div class="login-link">
+            Sudah punya akun? 
+            <a href="{{ route('login') }}">Login</a>
         </div>
     </div>
 </div>
-@endsection
+
+</body>
+</html>

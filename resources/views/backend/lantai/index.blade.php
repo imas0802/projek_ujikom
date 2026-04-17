@@ -1,5 +1,9 @@
 @extends('layouts.backend')
 
+@section('styles')
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+@endsection
+
 @section('content')
 <div class="container-fluid">
 
@@ -7,7 +11,7 @@
         <div class="card-header card-header-clean d-flex justify-content-between align-items-center">
             <span>📊 Data Lantai</span>
 
-            <a href="{{route('backend.lantai.create')}}" class="btn btn-primary-soft">
+            <a href="{{route('backend.lantai.create')}}" class="btn btn-outline-primary">
                 + Tambah
             </a>
         </div>
@@ -15,13 +19,13 @@
         <div class="card-body">
 
             <div class="table-responsive">
-                <table class="table table-clean align-middle" id="dataLantai">
+                <table class="table table-clean align-middle w-100" id="dataLantai">
                     <thead>
                         <tr>
-                            <th>No</th>
+                            <th style="width:50px;">No</th>
                             <th>Gedung</th>
                             <th>Lantai</th>
-                            <th>Aksi</th>
+                            <th style="width:150px;">Aksi</th>
                         </tr>
                     </thead>
 
@@ -32,7 +36,7 @@
                             <td class="fw-semibold">{{$data->gedung->nama_gedung}}</td>
                             <td>{{$data->nama_lantai}}</td>
 
-                            <td>
+                            <td class="text-center">
                                 <a href="{{route('backend.lantai.edit',$data->id)}}"
                                     class="btn btn-sm btn-warning">
                                     Edit
@@ -62,3 +66,22 @@
 
 </div>
 @endsection
+
+
+@push('scripts')
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script> 
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+<script>
+$(document).ready(function () {
+    $('#dataLantai').DataTable({
+        responsive: true,
+        autoWidth: false,
+        pageLength: 5, // default tampil 5
+        lengthMenu: [5, 10, 25, 50], // ini filter yang kamu mau
+        ordering: false
+    });
+});
+</script>
+@endpush

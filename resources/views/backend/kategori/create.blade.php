@@ -6,7 +6,7 @@
 
     <div class="card card-form p-4">
 
-        <h4 class="mb-4 fw-bold">📂 Tambah Kategori</h4>
+        <h4 class="mb-4 fw-bold">➕ Tambah Kategori</h4>
 
         <form action="{{ route('backend.kategori.store') }}" method="POST">
             @csrf

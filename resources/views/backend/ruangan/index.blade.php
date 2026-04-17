@@ -11,7 +11,7 @@
         <div class="card-header card-header-clean d-flex justify-content-between align-items-center">
             <span>📊 Data Ruangan</span>
 
-            <a href="{{ route('backend.ruangan.create') }}" class="btn btn-primary-soft">
+            <a href="{{ route('backend.ruangan.create') }}" class="btn btn-outline-primary">
                 + Tambah
             </a>
         </div>
